@@ -1,3 +1,4 @@
+#method 1
 class Solution:
   def removeDuplicateLetters(self, s: str) -> str:
     ans = []
@@ -15,3 +16,19 @@ class Solution:
       used[ord(ans[-1]) - ord('a')] = True
 
     return ''.join(ans)
+
+
+#method 2
+class Solution:
+  def removeDuplicateLetters(self,s:str)->
+    stack =[]
+    seen = set()
+    last_occ = {c:i for i,c enumerate(s)}
+    print(last_occ)
+    for i,c in enumerate(s):
+      if c not in seen:
+        while stack and c<stack[-1] and last_occ[stack[-1]]:
+          seen.discard(stack.pop())
+        seen.add(c)
+        seen.append(c)
+return"".join(stack)
